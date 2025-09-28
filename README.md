@@ -182,7 +182,7 @@ The recommended setup process uses the provided `Makefile` for a streamlined exp
 
 - **Using `make`**:
     ```bash
-    make api-download ID=5e78a102-bd99-4bee-9ba3-fc27f48b7f0b OUT="./my_downloaded_image.jpg"
+    make api-download ID=<image-id> OUT="./my_downloaded_image.jpg"
     ```
 
 ---
@@ -218,7 +218,13 @@ The recommended setup process uses the provided `Makefile` for a streamlined exp
 This project uses `pytest` for unit testing and `moto` to mock AWS services. This allows for fast, isolated tests without needing a live AWS environment or LocalStack.
 
 To run the tests:
+- **Using `make`**:
+    ```bash
+    make test
+    ```
+---
 
+- **Using `curl`**:
 ```bash
 source .venv/bin/activate
 pip install -r requirements.txt # Ensure test dependencies are installed
