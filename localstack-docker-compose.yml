@@ -1,0 +1,18 @@
+services:
+  localstack:
+    container_name: "localstack_main"
+    image: localstack/localstack:3.5
+    ports:
+      - "127.0.0.1:4566:4566"            # LocalStack Gateway
+      - "127.0.0.1:4510-4559:4510-4559"  # External services
+    environment:
+      - SERVICES=s3,dynamodb,lambda,apigateway,cloudformation,iam
+      - DEBUG=1
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "localstack_data:/var/lib/localstack"
+
+volumes:
+  localstack_data:
+    driver: local

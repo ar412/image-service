@@ -1,0 +1,35 @@
+version = 0.1
+
+[local.deploy.parameters]
+stack_name = "image-service-stack"
+resolve_s3 = true
+s3_prefix = "image-service-stack"
+region = "us-east-1"
+profile = "localstack"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+disable_rollback = true
+image_repositories = []
+parameter_overrides = "AppEnv=local"
+
+[stage.deploy.parameters]
+stack_name = "image-service-stack-stage"
+resolve_s3 = true
+s3_prefix = "image-service-stack-stage"
+region = "us-east-1"
+profile = "default" # Assuming a default AWS profile for staging
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+image_repositories = []
+parameter_overrides = "AppEnv=stage"
+
+[prod.deploy.parameters]
+stack_name = "image-service-stack-prod"
+resolve_s3 = true
+s3_prefix = "image-service-stack-prod"
+region = "us-east-1"
+profile = "default" # Assuming a default AWS profile for production
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+image_repositories = []
+parameter_overrides = "AppEnv=prod"
